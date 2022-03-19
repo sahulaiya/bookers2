@@ -1,0 +1,34 @@
+<%= form_with model:@user, local:true do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>User info</h2>
+  <% if @user.errors.any? %>
+  <h2 class= 'error'><%= @user.errors.count %>error prohibited this obj from being saved:</h2>
+  <% @user.errors.full_messages.each do |message| %>   
+  <ul>
+  <li class= 'error'><%= message %></li>
+  </ul>
+  <% end %>
+<% end %>
+     <p>Name</p>
+     <%= f.text_field :name %>
+        <p>Image</p>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+       <p>lntroduction</p>
+       <%= f.text_area :introduction %>
+      <p><%= f.submit "Update User" %></p>
+        <% end %>
+      </div>
+      </div>
+      </div
+      
+  <footer>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="mx-auto">
+        <p>CopyRight Infratop.inc</p>
+      </div>
+    </div>
+  </div>
+</footer>

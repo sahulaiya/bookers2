@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Bookers</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+       
+       <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to   user_path(current_user) , class:"nav-link active" do%>
+          <i class="fas fa-home"></i> Home
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to   users_path , class:"nav-link active" do%>
+          <i class="fas fa-users"></i>Users
+          <% end %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to   books_path , class:"nav-link active" do%>
+        <i class="fas fa-book-open" ></i>Books
+          <% end %>
+        </li>
+        
+        
+        <li class="nav-item">
+        <%= link_to destroy_user_session_path , method: :delete, class:"nav-link text-light" do%>
+        <i class="fas fa-sign-out-alt"></i>Log out
+        <% end %>
+      </li>
+      
+      
+      <% else %>
+      
+        <li class="nav-item">
+          <%= link_to   root_path , class:"nav-link active" do%>
+          <i class="fas fa-home"></i> Home
+          <% end %>
+        </li>
+      
+        <li class="nav-item">
+          <%= link_to   about_path , class:"nav-link active" do%>
+          <i class="fas fa-link nav-link text-light"></i>About
+          <% end %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to new_user_registration_path , class:"nav-link active" do%>
+        <i class= "fas fa-user-plus"></i>Sign up
+        <% end %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to new_user_session_path , class:"nav-link active" do%>
+          <i class= "fas fa-sign-in-alt nav-link text-light"></i>Log in
+          <% end %>
+        </li>
+      
+      <% end %>
+      
+    </div>
+  </div>
+</nav>
+     
+    <%= yield %>
+  </body>
+</html>
